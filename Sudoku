@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+  int X=0, Y=0, k=0, j=0, W=0, n=0, quad=0, S[9][9];
+  scanf("%d",&n);
+  int check = 1;
+  while(check<=n)
+  {
+    for(X=0; X<9; X++)
+    {
+      for(Y=0; Y<9; Y++)
+      {scanf("%i",&S[X][Y]);}
+    }
+    for(X=0; X<9; X++)
+    {
+      if(S[X][0]*S[X][1]*S[X][2]*S[X][3]*S[X][4]*S[X][5]*S[X][6]*S[X][7]*S[X][8]!=362880)
+      {W+=1;}
+    }
+    for(Y=0; Y<9; Y++)
+    {
+      if(S[0][Y]*S[1][Y]*S[2][Y]*S[3][Y]*S[4][Y]*S[5][Y]*S[6][Y]*S[7][Y]*S[8][Y]!=362880)
+      {W++;}
+    }
+    while(j<=6)
+    {
+      while(k<=6)
+      {
+        for(X=j; X<3+j; X++)
+        {
+          for(Y=k; Y<3+k; Y++)
+          {quad+=S[X][Y];}
+        }
+        if(quad!=45)
+        {W+=1;
+          X=6;}
+      k=k+3;
+      }
+    j+=3;
+    }
+    if(W==0)
+    {printf("Instancia %i\nSIM\n\n",check);}
+    else
+    {printf("Instancia %i\nNAO\n\n",check);}
+  check+=1;
+  W=0;
+  j=0;
+  k=0;
+  }
+return 0;
+}
